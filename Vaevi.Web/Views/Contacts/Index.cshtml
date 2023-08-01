@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Vaevi.Models.WebModels.ContactModel>
+@{
+    ViewData["Title"] = "Contacts";
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">List Contacts</h1>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        @Html.ActionLink("Create New", "Create", new {@class= "btn btn-primary"})
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <table id="contacts" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Phone</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var contact in Model)
+                    {
+                        <tr>
+                            <td>@contact.FullName</td>
+                            <td>@contact.Phone</td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = contact.Id}) &nbsp;
+                                @Html.ActionLink("Delete", "Delete", new { id = contact.Id}) &nbsp;
+                                @Html.ActionLink("Details", "Details", new { id = contact.Id}) &nbsp;
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Phone</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        var table = new DataTable('#contacts', {
+            "columnDefs": [
+                { "searchable": false, "targets": 2 }
+            ]
+        });
+    </script>
+}

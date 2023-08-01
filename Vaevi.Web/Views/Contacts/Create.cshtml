@@ -1,0 +1,59 @@
+﻿@model Vaevi.Models.WebModels.ContactModel
+@{
+    ViewData["Title"] = "Contacts";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Create Contacts</h1>
+</div>
+
+<div class="container">
+    @using (Html.BeginForm(FormMethod.Post, true))
+    {
+        @Html.ValidationSummary()
+        @Html.AntiForgeryToken()
+        
+        <div class="row">
+            <div class="col-md-3">
+                @Html.LabelFor(x => x.FullName, new { @class = "form-label" })
+            </div>
+            <div class="col-md-9">
+                @Html.TextBoxFor(x => x.FullName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x=>x.FullName)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                @Html.LabelFor(x => x.Phone, new { @class = "form-label" })
+            </div>
+            <div class="col-md-9">
+                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x=>x.Phone)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                @Html.LabelFor(x => x.Email, new { @class = "form-label" })
+            </div>
+            <div class="col-md-9">
+                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x=>x.Email)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                @Html.LabelFor(x => x.Address, new { @class = "form-label" })
+            </div>
+            <div class="col-md-9">
+                @Html.TextAreaFor(x => x.Address, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x=>x.Address)
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+        
+    }
+</div>
+
+

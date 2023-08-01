@@ -1,0 +1,48 @@
+﻿@model Vaevi.Models.WebModels.ContactModel
+@{
+    ViewData["Title"] = "Contacts";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Delete Contacts</h1>
+</div>
+
+
+@using (Html.BeginForm("Delete", "Contacts", new { Id = Model.Id }))
+{
+    @Html.HiddenFor(x=>x.Id)
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(x => x.FullName, new { @class = "form-label" })
+        </div>
+        <div class="col-md-9">
+            @Html.DisplayFor(x => x.FullName)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(x => x.Phone, new { @class = "form-label" })
+        </div>
+        <div class="col-md-9">
+            @Html.DisplayFor(x => x.Phone)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(x => x.Email, new { @class = "form-label" })
+        </div>
+        <div class="col-md-9">
+            @Html.DisplayFor(x => x.Email)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(x => x.Address, new { @class = "form-label" })
+        </div>
+        <div class="col-md-9">
+            @Html.TextAreaFor(x => x.Address)
+        </div>
+    </div>
+    <button type="submit" class="btn btn-danger">Delete</button>
+}
